@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+int  fact(int n){
+    int sum=1;
+    for(int i=1;i<=n;i++){
+    sum*=i;
+    }
+    return sum;
+}
+int power(int b,int e){
+    int po=1;
+    for(int i=1;i<=e;i++){
+        po*=b;
+    }
+    return po ;
+}
+int natur(int natural,int sum){
+    for(int i=2;i<=natural;i++){
+        sum+=i;
+    }
+    return sum;
+}
+void fibo(int q){
+    int a1=0,b1=1,c1=0;
+    cout<<a1<<"\t"<<b1<<"\t";
+    for(int i=0;i<q;i++){
+    c1=a1+b1;
+    cout<<c1<<"\t";
+    a1=b1;
+    b1=c1;
+        
+    }
+}
+
+int main() {
+    int ch;
+    cout<<"enter 1 for finding the factorial of a number:"<<endl;
+    cout<<"enter 2 for finding the power of a number:"<<endl;
+    cout<<"enter 3 to find sum of first n natural number:"<<endl;
+    cout<<"enter 4 for n terms fibonacci series:"<<endl;
+    cout<<"enter 0 exit:"<<endl;
+    cin>>ch;
+    switch(ch){
+        case 1:
+            int n,f;
+            cout<<"enter the number whose factorial you want to find:";
+            cin>>n;
+            f=fact(n);
+            cout<<"your factorial is:"<<f;
+            break;
+        case 2:
+            int b,e,p;
+            cout<<"enter the base number:";
+            cin>>b;
+            cout<<"enter the exponent number:";
+            cin>>e;
+            p=power(b,e);
+            cout<<"your power of a number is:"<<p;
+            break;
+        case 3:
+            int summ,natural,sum;
+            sum=1;
+            cout<<"enter the natural number to find the sum:";
+            cin>>natural;
+            summ=natur(natural,sum);
+            cout<<"your sum is:"<<summ;
+            break;
+        case 4:
+            int q;
+            cout<<"enter the number of terms for fibonacci series:";
+            cin>>q;
+            fibo(q);
+            break;
+    }while(ch!=0);
+return 0;
+}
