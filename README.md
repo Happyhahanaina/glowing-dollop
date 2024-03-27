@@ -1,2 +1,2 @@
 # glowing-dollop
-here i will write my code i am currently learned
+here i will write my code I have recently learned in my course 
