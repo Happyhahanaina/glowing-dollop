@@ -1,0 +1,36 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+int main() {
+    int ar[3],i;
+    float d,x,y,s,a,b,c,z;
+    cout<<"entetr the coefficient of quadratic equation x^2,x then constant term:";
+    for(i=0;i<3;i++){
+        cin>>ar[i];
+    }
+    cout<<"your x^2 coefficient x coefficeient and constant term are:"<<endl;
+    for(i=0;i<3;i++){
+        cout<<ar[i]<<"\t";
+    }
+    d=pow(ar[1],2)-4*ar[0]*ar[2];
+    s=pow(d,0.5);
+    if(d>0){
+        x=(-ar[1]+s)/(2*ar[0]);
+        y=(-ar[1]-s)/(2*ar[0]);
+    }
+    else{
+        cout<<"no real roots";
+    }
+    cout<<endl<<"the solutions are:"<<x<<endl;
+    cout<<"the solutions are:"<<y<<endl;
+    for(i=0;i<3;i++){
+        a=ar[0];
+        b=ar[1];
+        c=ar[2];
+    }
+    cout<<"your quadratic equation is"<<a<<"x^2+"<<b<<"x+"<<c;
+    cout<<"enter the value of x:";
+    cin>>x;
+    cout<<"answer of quadratic equation is:"<<a*pow(x,2)+b*x+c;
+    return 0;
+}
