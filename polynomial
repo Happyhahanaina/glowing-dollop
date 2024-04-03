@@ -34,3 +34,34 @@ int main() {
     cout<<"answer of quadratic equation is:"<<a*pow(x,2)+b*x+c;
     return 0;
 }
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    int s1,s2,i,j;
+    cout<<"enter the length of a1:";
+    cin>>s1;
+    int a1[s1];
+    cout<<"enter the length of a2:";
+    cin>>s2;
+    int a2[s2];
+    for (i=0;i<s1;i++){
+        cout<<"enter the elements of a1:";
+        cin>>a1[i];
+    }
+    for (i=0;i<s1;i++){
+        cout<<"enter the elements of a2:";
+        cin>>a2[i];
+    }
+    i=s1;
+    s1=s1+s2;
+    for(j=0;j<s2;j++){
+        a1[i]=a2[j];
+        i++;
+    }
+    cout<<"after merging\n";
+    for (int a=0;a<s1;a++){
+        cout<<a1[a]<<"\t";
+    } 
+    return 0;
+}
