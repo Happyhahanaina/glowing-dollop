@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+void address(string s){
+    for(int i=0;s[i]!='\0';i++){
+        cout<<(void*)&s[i]<<endl;
+    }
+}
+int length(char* s2 ,int l){
+    for(int i=0;s2[i]!='\0';i++){
+    l++;
+}
+return l;
+}
+void low_to_up(string s,int l){
+    for(int i=0;s[i]!='\0';i++){
+        if(s[i]>='a'&&s[i]<='z'){
+            s[i]=s[i]-32;
+        }
+    }
+    cout<<s<<endl;
+}
+void reverse(string s,int l){
+    for(char c:s){
+    l++;
+    }
+    for(int i=l;i>=0;i--){
+        cout<<s[i];
+    }
+    cout<<endl;
+}
+int main() {
+    int ch,l=0,l1;
+    char* s2;
+    string s,s1;
+    do{
+        cout<<"enter your choice"<<endl;
+        cout<<"enter 1 for the address of each string"<<endl;
+        cout<<"enter 3 for concatenation of two strings"<<endl;
+        cout<<"enter 2 for compairing two strings"<<endl;
+        cout<<"enter 4 for calculating the length of the strings"<<endl;
+        cout<<"enter 5 for convertiong lower case letters to uppercase"<<endl;
+        cout<<"rnter 6 for reversing the string"<<endl;
+        cout<<"enter 0 for exit"<<endl;
+        cin>>ch;
+        cin.ignore();
+        switch(ch){
+            case 1:
+                cout<<"enter the string:"<<endl;
+                cin>>s;
+                address(s);
+                break;
+            case 2:
+                cout<<"enter the string 1:"<<endl;
+                cin>>s;
+                cout<<"enter the string 2:"<<endl;
+                cin>>s1;
+                if(s==s1){
+                    cout<<"the strings are equal"<<endl;
+                }
+                else{
+                    cout<<"the strings are not same"<<endl;
+                }
+                break;
+            case 3:
+                cout<<"enter the string 1:"<<endl;
+                cin>>s;
+                cout<<"enter the string 2:"<<endl;
+                cin>>s1;
+                cout<<s+s1<<endl;
+                break;
+            case 4:
+                cout<<"enter the string :"<<endl;
+                char s2[100];
+                cin>>s2;
+                l1=length(s2,l);
+                cout<<"the length of string is:"<<l1<<endl;
+                break;
+            case 5:
+                cout<<"enter the string :"<<endl;
+                cin>>s;
+                low_to_up(s,l);
+                break;
+            case 6:
+                cout<<"enter the string :"<<endl;
+                cin>>s;
+                reverse(s,l);
+                break;
+            case 0:
+                cout<<"thanks bye";
+                break;
+            default:
+                 cout<<"please enter number 0 to 6";
+                 break;
+        }
+    }while(ch!=0);
+    return 0;
+}
