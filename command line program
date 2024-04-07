@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+bool hello(int n){
+  int y=1;
+  for(int i=2 ; i<n;i++){
+      if(n%i==0){
+          y=0;
+          break;
+      }
+  }
+  if(y==1){
+      return true;
+  }
+  else{
+    return false;
+  }
+  return 0;
+}
+void till(int n){
+  int a=0;
+  int i=2;
+  while(a<n){
+      if (hello(i)==1){
+          cout<<i<<'\t';
+          a=a+1;
+          i=i+1;
+      }
+      else{
+          i=i+1;
+      }
+}
+}
+void upto(int n){
+  int i;
+  for(i=2;i<n;i++){
+      int y=1;
+      for(int j=2;j<i;j++){
+          if(i%j==0){
+              y=0;
+              break;
+          }
+      }
+      if(y==1){
+          cout<<i<<'\t';
+      }
+}
+}
+int main(int argc, char *argv[]) {
+  int ch,b=0;
+  do{
+    cout<<endl;
+    cout<<"enter 1 for checking whether the argument is prime or not"<<endl;
+    cout<<"enter 2 for n prime numbe"<<endl;
+    cout<<"enter 3 for prime number upto n"<<endl;
+    cout<<"enter 0 for exit"<<endl;
+    cin>>ch;
+    int n=stoi(argv[1]);
+    switch(ch){
+      case 1:
+          b=hello(n);
+          if(b){
+            cout<<"its prime: "<<n<<endl;
+           }
+           else{
+            cout<<"its not prime: "<<n<<endl;
+           }
+           break;
+      case 2:
+          till(n);
+          break;
+      case 3:
+           upto(n);
+           break;
+          
+    }
+  }while(ch!=0);
+    }
