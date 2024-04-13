@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(int n,char* li[]) {
+   string str="";
+   int eachalpha[26]={0};
+   int al;
+   int i=1;
+   while(i<n)
+   {
+    str=str+li[i]; 
+     i++;
+   }
+  for
+    (i=0;i<str.length();i++)
+  {
+  if(str[i]>='A'&& str[i]<='Z'){
+  al=((int)str[i])-65;
+    eachalpha[al]++;
+  }
+  else if(str[i]>='a'&& str[i]<='z'){
+    al=((int)str[i])-97;
+    eachalpha[al]++;
+  }
+}
+  for(int i=0;i<26;i++){
+    cout<<"\t"<<(char)(65+i)<<"\t"<<eachalpha[i]<<endl;
+  }
+  return 0;
+}
