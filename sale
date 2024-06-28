@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main() {
+   int salePrice,stateSalesTax,citySalesTax ,amountDue,luxuryTax,salesTax;
+   cout<<"enter salePrice:";
+   cin>>salePrice;
+   stateSalesTax = salePrice*0.04;
+   citySalesTax =  salePrice*0.015;
+   if(salePrice>50,000){
+       luxuryTax = salePrice*0.1;
+   }
+    else{
+        luxuryTax = 0;
+   }
+   salesTax = citySalesTax + stateSalesTax + luxuryTax;
+   amountDue = salePrice + salesTax;
+   cout<<"Amount due:"<<amountDue<<endl<<"sales tax:"<<salesTax;
+    return 0;
+}
