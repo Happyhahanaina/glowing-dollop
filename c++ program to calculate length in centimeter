@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int feet, inches,totalInches;
+    double centimeters;
+    const double CENTIMETERS_PER_INCH = 2.54;
+    const int INCHES_PER_FOOT = 12;
+    cout<<"Please enter feet and inches with space.\n";
+    cin>>feet>>inches;
+    totalInches = (INCHES_PER_FOOT*feet)+inches;
+    centimeters = totalInches*CENTIMETERS_PER_INCH;
+    cout<<"The lenght in centimeters :"<<centimeters;
+    return 0;
+}
