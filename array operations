@@ -1,0 +1,152 @@
+#include<iostream>
+using namespace std;
+
+void insert_sort(int x[], int n){  //function for insertsort
+    int i , y , k;
+    for(k=1; k<n ; k++){
+        y=x[k];
+        for(i=k-1; i>=0 && y<x[i]; i-- ){
+            x[i+1]=x[i];
+        }
+        x[i+1]=y;
+    }
+}
+void transverse(int x[],int n){   //function for travering the array
+    for (int i =0; i<n ; i++){
+        cout<<"element at index\t"<<i<<"\tis\t"<<x[i]<<endl;
+    }
+}
+
+void linear_search(int x[], int n, int element){   //function for searching an element
+    int flag = 0;
+    for(int i=0;i<=n;i++){
+        if(x[i]==element){
+            cout<<element<<"\tis present in the array at the index\t"<<i;
+            flag = 1;
+        }
+    }
+    if (flag==0){
+        cout<<element<<"\t is not present in the array";
+    }
+}
+
+int  insert(int x[],int n){   //function for inserting an element in the array
+    int index, value;
+    cout<<endl<<"Enter the index at which you want to insert the value(0 to"<<n<<")";
+    cin>>index;
+    cout<<"Enter the value you to insert";
+    cin>>value;
+    for(int i = n; i>=index; i--){
+        x[i+1] = x[i];
+    }
+    x[index] = value;
+    return n+1;
+}
+
+int  delete_element(int x[], int n){  //function for deletiong an element from the array
+      int index;
+      cout<<"Enter the index of the element you want to delete(0 to"<<n<<")"<<endl;
+      cin>>index;
+      for(int i=index;i<n;i++){
+        x[i]=x[i+1];
+    }
+    return n-1;
+}
+
+void update_array(int x[]){   //function for updating an element in the array
+    int update_index;
+    cout<<"Enter the index of the element you want to update:";
+    cin>>update_index;
+    int update_element;
+    cout<<endl<<"Enter the element:";
+    cin>>update_element;
+    x[update_index] = update_element;
+    }
+
+void add_arrays(int x[], int n){  //function for adding another array at the end 
+    int elements;
+    cout<<"Enter the number of elements in the sencod array";
+    cin>>elements;
+    int add_array[elements];
+    cout<<endl<<"Enter the elements of the second array:";
+    for(int i = 0; i<elements; i++){
+        cin>>add_array[i];
+    }
+    int index;
+    index = elements + n;
+    int new_array[index];
+    for(int i= 0; i<index;i++){
+        new_array[i] = x[i];
+    }
+    for(int i = 0;i<index; i++){
+        new_array[i + n] = add_array[i]; 
+    }
+    cout<<"Your new array is:";
+    for(int i = 0;i<index; i++){
+        cout<<new_array[i]<<"\t";
+    }
+    }
+int main(){
+    int choice;
+    int n,element;
+    cout<<"Enter the length of the array";
+    cin>>n;
+    int x[n];
+    cout<<"Enter the elements of the array:";
+    for (int i=0; i<n;i++){
+        cin>>x[i];
+    }
+    do{
+        cout<<endl<<"Enter 1 for insert sort."<<endl;
+        cout<<"Enter 2 trasversing the array."<<endl;
+        cout<<"Enter 3 for serching a element."<<endl;
+        cout<<"Enter 4 for inserting a element at specified index."<<endl;
+        cout<<"Enter 5 for deleting an element at specified index."<<endl;
+        cout<<"Enter 6 updating an element at specified index.(0 to"<<n<<")"<<endl;
+        cout<<"Enter 7 for adding another array at the end of the existing array."<<endl;
+        cout<<"Enter 0 for exit"<<endl;
+        cin>>choice;
+        switch(choice){
+            case 1:
+                insert_sort(x,n);
+                cout<<"After Insertion Sort"<<endl;
+                transverse(x,n);
+                cout<<endl<<endl;
+                break;
+            case 2:
+                transverse(x,n);
+                cout<<endl<<endl;
+                break;
+            case 3:
+                cout<<"Enter the number you want to search in the array";
+                cin>>element;
+                linear_search(x,n,element);
+                cout<<endl<<endl;
+                break;
+            case 4:
+                n = insert(x,n);
+               cout<<endl<<endl;
+                break;
+            case 5:
+                n = delete_element(x,n);
+                cout<<endl<<endl;
+                break;
+            case 6:
+                update_array(x);
+                cout<<endl<<endl;
+                break;
+            case 7:
+                add_arrays(x,n);
+                cout<<endl<<endl;
+                break;
+            case 0:
+                cout<<"Bye";
+                break;
+            default:
+                cout<<"Please enter valid option"<<endl;
+                break;
+
+        }
+    }while(choice!=0);
+return 0;
+}
