@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+int arr[10];
+int top = -1;
+void push(int element){
+    if(top == 9){
+        cout<<"Stack overflow"<<endl;
+    }
+    else{
+        top++;
+        arr[top] = element;
+    }
+}
+
+void pop(){
+    if(top == -1){
+        cout<<"Stack underflow"<<endl;
+    }
+    else{
+        top--;
+    }
+}
+
+void Top(){
+    if(top == -1){
+        cout<<"Stack is empty"<<endl;
+    }
+    else{
+        cout<<arr[top]<<endl;
+    }
+}
+
+void empty(){
+    if(top == -1){
+        cout<< true;
+    }
+    else{
+        cout<< false;
+    }
+}
+int main(){
+    push(10);
+    push(1);
+    Top();
+    pop();
+    Top();
+    pop();
+    pop();
+    empty();
+}
