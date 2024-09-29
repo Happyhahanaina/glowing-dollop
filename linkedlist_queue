@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+class node{
+	public:
+	int data;
+	node* next;
+	
+	node(int data){
+		this->data = data;
+		this->next = NULL;
+	}
+};
+
+class queue{
+	node*front;
+	node*back;
+	public:
+	queue(){
+	front = NULL;
+	back = NULL;	
+	}
+	
+	void enqueue(int val){
+		node* new_node = new node(val);
+		if(front == NULL){
+			front = new_node;
+			back = new_node;
+		}
+		else{
+			back->next = new_node;
+			back = new_node;
+		}
+	}
+	
+	void dequeue(){
+		if(front == NULL){
+			cout<<"No element to dequeue"<<endl;
+		}
+		else{
+		node* to_delete;
+		to_delete = front;
+		front = front->next;
+		delete to_delete;
+		}
+		
+		if(front == NULL){
+			back == NULL;
+		}
+	}
+	
+	void print(){
+		node*temp = front;
+		while(temp!=NULL){
+			cout<<temp->data<<endl;
+			temp = temp->next;
+		}
+	}
+};
+
+int main(){
+	queue ob;
+	ob.enqueue(10);
+	ob.enqueue(5);
+	ob.enqueue(5);
+	ob.enqueue(5);
+	ob.enqueue(5);
+	ob.enqueue(5);
+	ob.print();
+	ob.dequeue();
+	ob.print();
+	ob.dequeue();
+	ob.dequeue();
+	ob.dequeue();
+	ob.dequeue();
+	ob.dequeue();
+	ob.dequeue();
+	
+	
+}
+
