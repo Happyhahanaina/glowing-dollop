@@ -1,0 +1,172 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+	public:
+	int data;
+    Node* next;
+    Node(int data){
+    	this->data = data;
+    	this->next = NULL;
+	}
+    
+};
+
+class linked_list{
+	Node* head;
+	public:
+	linked_list(){
+		head =NULL;
+	}
+	void insertAtBeg(int data){
+		Node* new_node = new Node(data);
+		if(head == NULL){
+			head = new_node;
+		}
+		else{
+		new_node->next = head;
+		head = new_node;
+		}
+	}
+	
+	void insertAtPos(int data, int position){
+		int i = 1;
+		Node* new_node = new Node(data);
+		Node*temp = head;
+		if(head==NULL){
+			head = new_node;
+		}
+		if(position==1){
+	        new_node->next = head;
+		    head = new_node;
+		}
+		else{
+			while(temp!=NULL && i<=position-2){
+				temp = temp->next;
+				i++;
+			}
+			if (temp == NULL) {
+            cout << "Position is out of bounds." << endl;
+            delete new_node; // Clean up the new node since we can't insert it
+            return;
+        }
+			new_node->next = temp->next;
+		    temp->next = new_node;
+		    
+		}
+	}
+	
+	void deleteAtBeg(){
+		Node* to_delete = head;
+		if (head == NULL) {
+        cout << "List is empty, nothing to delete." << endl;
+        return;
+    }
+		head = head->next;
+		delete to_delete;
+	}
+	
+	void deleteAtPos(int position){
+		int i = 1;
+		Node* to_delete = head;
+		Node* temp = head;
+		if (head == NULL) {
+        cout << "List is empty, nothing to delete." << endl;
+        return;
+    }
+
+		if(position == 1){
+			deleteAtBeg();
+		}
+		else{
+		while(temp!=NULL && i<=position-2){
+			temp = temp->next;
+			i++;
+		}
+		if(temp == NULL){
+			cout<<"out of bound"<<endl;
+			return;
+		}
+		
+		to_delete = temp->next;
+		temp->next = temp->next->next;
+		delete to_delete;
+	}
+	}
+	
+	Node* findx (int data){
+		Node* temp = head;
+		while(temp != NULL){
+			if(temp->data == data){
+				return temp;
+			}
+			temp = temp->next;
+		}
+		return NULL;
+	}
+	void print(){
+		Node* temp = head;
+		while(temp!=NULL){
+			cout<<temp->data<<"\t";
+			temp = temp->next;
+		}
+		cout<<endl;
+	}
+};
+
+int main(){
+	int choice;
+	int element,position;
+	Node* found;
+	linked_list ob;
+	do{
+	    cout<<endl;
+		cout<<"Enter 1 for inserting element at the begining "<<endl;
+		cout<<"Enter 2 for inserting element at the position "<<endl;
+		cout<<"Enter 3 for deleting element at the begining "<<endl;
+		cout<<"Enter 4 for deleting element at the position "<<endl;
+		cout<<"Enter 5 for finding element x and returning its pointer "<<endl;
+		cout<<"Enter 6 for printing the linked list"<<endl;
+		cout<<"Enter 0 for existing"<<endl;
+		cin>>choice;
+		switch(choice){
+			case 1:  
+			        cout<<"Enter the Element"<<endl;
+			        cin>>element;
+			        ob.insertAtBeg(element);
+			        break;
+			case 2:
+				    cout<<"Enter the element and the position"<<endl;
+				    cin>>element;
+				    cin>>position;
+				    ob.insertAtPos(element,position);
+				    break;
+			case 3:
+				    ob.deleteAtBeg();
+				    break;
+			case 4:
+				    cout<<"enter the position"<<endl;
+				    cin>>position;
+				    ob.deleteAtPos(position);
+				    break;
+			case 5:
+				cout << "Enter the element to search" << endl;
+                cin >> element;
+                found = ob.findx(element);
+                if (found) {
+                    cout << "Element " << element << " found at address: " << found << " with value: " << found->data << endl;
+                } else {
+                    cout << "Element " << element << " not found." << endl;
+                }
+                break;
+			case 6:
+				  ob.print();
+				  break;
+			case 0:
+				    cout<<"Bye";
+				    break;
+			default:
+                cout << "Invalid choice, please try again." << endl;
+			      	}
+	}while(choice!=0);
+}
