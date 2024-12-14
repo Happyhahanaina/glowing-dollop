@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int data){
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+class Circular{
+    Node* cursor;
+    public:
+
+    Circular(){
+        cursor = NULL;
+    }
+
+    void add(int data){
+        Node* new_node = new Node(data);
+        if(cursor == NULL){
+            cursor = new_node;
+            cursor->next= cursor;
+        }
+        else{
+            new_node->next = cursor->next;
+            cursor->next = new_node;
+        }
+    }
+    void advance(){
+        if(cursor == NULL){
+            cout<<"list is empty";
+            return;
+            
+        }
+        cursor = cursor->next;
+    }
+    void display(){
+        if(cursor == NULL){
+            cout<<"List is empty";
+            return;
+        }
+        Node* temp = cursor->next;
+        do{
+            cout<<temp->data<<"\n";
+            temp=temp->next;
+        }while(temp!=cursor->next);
+    }
+
+};
+int main(){
+    Circular ob;
+    ob.add(10);
+    ob.add(20);
+    ob.add(30);
+    ob.display();
+    ob.advance();
+    ob.display();
+}
