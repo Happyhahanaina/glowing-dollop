@@ -1,0 +1,112 @@
+#include<iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+    node* prev;
+
+    node(int data){
+        this->data = data;
+        next = NULL;
+        prev = NULL;
+    }
+};
+
+class deque{
+    node* head;
+    node* tail;
+    public:
+    deque(){
+        head = NULL;
+        tail = NULL;
+    }
+
+    void push_front(int data){
+        node* new_node = new node(data);
+        if(head == NULL && tail == NULL){
+            head = new_node;
+            tail = new_node;
+            return;
+        }
+        new_node->next = head;
+        head->prev = new_node;
+        head = new_node;
+    }
+
+    void push_back(int data){
+        node* new_node = new node(data);
+        if(head == NULL && tail == NULL){
+            head = new_node;
+            tail = new_node;
+            return;
+        }
+        new_node->prev = tail;
+        tail->next = new_node;
+        tail = new_node;
+    }
+    void pop_back(){
+        if(tail == NULL){
+            cout<<"empty deque\n";
+            return;
+        }
+        node* to_pop;
+        to_pop = tail;
+        tail = tail->prev;
+        if (tail == nullptr) { 
+            head = nullptr; 
+            } 
+        else {
+            tail->next = NULL;
+            }
+        delete to_pop;
+    }
+    void pop_front(){
+        if(head == NULL){
+            cout<<"empty deque\n";
+            return;
+            }
+        node* to_pop = head;
+        head = head->next;
+        if (head == nullptr) { 
+            tail = nullptr;
+            } 
+        else {
+            head->prev = NULL; 
+        }
+        delete to_pop;
+    }
+
+    void front(){
+        if(head == NULL){
+            cout<<"deque is empty\n";
+            return;
+        }
+        cout<<head->data<<endl;
+    }
+
+    void back(){
+        if(tail == NULL&&head==NULL){
+            cout<<"deque is empty\n";
+            return;
+        }
+        cout<<tail->data<<endl;
+    }
+};
+
+int main(){
+    deque ob;
+    ob.push_front(11);
+    ob.back();
+    ob.front();
+    ob.push_back(10);
+    ob.back();
+    ob.front();
+    ob.pop_back();
+    ob.pop_front();
+    ob.back();
+    ob.front();
+    return 0;
+    
+}
