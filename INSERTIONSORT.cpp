@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 void insertion_sort_increasing(int array[], int length) {
     for (int i = 1; i < length; i++) {
         int key = array[i];
